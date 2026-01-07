@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <info>
-	<id>piwik</id>
-	<name>Piwik/Matomo Tracking</name>
-	<summary>Track users with Piwik/Matomo</summary>
-	<description>Track users with Piwik/Matomo</description>
+	<id>matomo</id>
+	<name>Matomo Tracking</name>
+	<summary>Track users with Matomo</summary>
+	<description>Track users with Matomo</description>
 	<version>0.13.0</version>
 	<licence>agpl</licence>
 	<author>Klaus Herberth</author>
 	<category>tools</category>
 
 	<website>http://sualko.github.io/cloud_piwik/</website>
-	<bugs>https://github.com/sualko/cloud_piwik/issues</bugs>
-	<repository type="git">https://github.com/sualko/cloud_piwik.git</repository>
+	<bugs>https://github.com/arawa/cloud_matomo/issues</bugs>
+	<repository type="git">https://github.com/arawa/cloud_matomo.git</repository>
 
 	<dependencies>
 		<nextcloud min-version="25" max-version="29"/>
