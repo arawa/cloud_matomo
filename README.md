@@ -1,4 +1,4 @@
-# Matomo for your Cloud
+# Matomo for your Nextcloud
 ![GitHub All Releases](https://img.shields.io/github/downloads/arawa/cloud_matomo/total.svg)
 [![GitHub license](https://img.shields.io/github/license/sualko/cloud_piwik.svg)](https://github.com/sualko/cloud_piwik/blob/master/LICENSE)
 
@@ -21,7 +21,7 @@ Track [Nextcloud](https://nextcloud.com) users with [Matomo](https://matomo.org)
 - Outlink
 
 ## Installation
-- Download and extract to <code>CLOUD_DIR/apps/piwik/</code>
+- Download and extract to <code>CLOUD_DIR/apps/matomo/</code>
 - Enable app
 - If needed create a new site in your Matomo installation
 - Insert Matomo site id and url on the cloud admin page (e.g. site id: <code>1</code>, url: <code>//domain.tld/piwik/</code>)
