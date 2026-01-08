@@ -1,11 +1,11 @@
 /*!
  * cloud_piwik v0.13.0 - 2024-09-15
- * 
+ *
  * Copyright (c) 2024 Klaus Herberth <klaus@jsxc.org> <br>
  * Released under the MIT license
- * 
- * Please see https://github.com/sualko/cloud_piwik
- * 
+ *
+ * Please see https://github.com/arawa/cloud_matomo
+ *
  * @author Klaus Herberth <klaus@jsxc.org>
  * @version 0.13.0
  * @license MIT

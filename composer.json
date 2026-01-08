@@ -1,6 +1,6 @@
 {
-    "name": "sualko/matomo",
-    "description": "Track Nextcloud users with piwik/matomo",
+    "name": "arawa/cloud_matomo",
+    "description": "Track Nextcloud users with matomo",
     "type": "project",
     "license": "AGPL",
     "authors": [
