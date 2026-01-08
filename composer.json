@@ -1,12 +1,20 @@
 {
-    "name": "sualko/matomo",
-    "description": "Track Nextcloud users with piwik/matomo",
+    "name": "arawa/cloud_matomo",
+    "description": "Track Nextcloud users with matomo",
     "type": "project",
     "license": "AGPL",
     "authors": [
         {
             "name": "Klaus Herberth",
             "email": "klaus@jsxc.org"
+        },
+        {
+            "name": "Sébastien Marinier",
+            "email": "sebastien.marinier@arawa.fr"
+        },
+        {
+            "name": "Baptiste Fotia",
+            "email": "baptiste.fotia@arawa.fr"
         }
     ],
     "require": {

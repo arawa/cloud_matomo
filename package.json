@@ -1,10 +1,10 @@
 {
-  "name": "cloud_piwik",
+  "name": "cloud_matomo",
   "version": "0.13.0",
-  "description": "Track Nextcloud users with piwik/matomo",
+  "description": "Track Nextcloud users with matomo",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sualko/cloud_piwik.git"
+    "url": "https://github.com/arawa/cloud_matomo.git"
   },
   "keywords": [
     "nextcloud",
@@ -13,11 +13,25 @@
     "tracking"
   ],
   "author": "Klaus Herberth <klaus@jsxc.org>",
+  "contributors": [
+    {
+      "name": "Klaus Herberth",
+      "email": "klaus@jsxc.org"
+    },
+    {
+      "name": "Sébastien Marinier",
+      "email": "sebastien.marinier@arawa.fr"
+    },
+    {
+      "name": "Baptiste Fotia",
+      "email": "baptiste.fotia@arawa.fr"
+    }
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sualko/cloud_piwik/issues"
+    "url": "https://github.com/arawa/cloud_matomo/issues"
   },
-  "homepage": "https://github.com/sualko/cloud_piwik",
+  "homepage": "https://github.com/arawa/cloud_matomo",
   "scripts": {
     "release:build": "grunt build:release",
     "release:sign": "grunt sign:release",
