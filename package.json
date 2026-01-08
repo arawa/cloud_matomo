@@ -13,6 +13,20 @@
     "tracking"
   ],
   "author": "Klaus Herberth <klaus@jsxc.org>",
+  "contributors": [
+    {
+      "name": "Klaus Herberth",
+      "email": "klaus@jsxc.org"
+    },
+    {
+      "name": "Sébastien Marinier",
+      "email": "sebastien.marinier@arawa.fr"
+    },
+    {
+      "name": "Baptiste Fotia",
+      "email": "baptiste.fotia@arawa.fr"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/arawa/cloud_matomo/issues"

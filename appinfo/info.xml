@@ -6,7 +6,11 @@
 	<description>Track users with Matomo</description>
 	<version>0.13.0</version>
 	<licence>agpl</licence>
+
+    <author mail="sebastien.marinier@arawa.fr" >Sébastien Marinier</author>
+    <author mail="baptiste.fotia@arawa.fr" >Baptiste Fotia</author>
 	<author>Klaus Herberth</author>
+
 	<category>tools</category>
 
 	<website>http://sualko.github.io/cloud_piwik/</website>
