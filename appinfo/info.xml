@@ -2,32 +2,34 @@
 <info>
 	<id>matomo</id>
 	<name>Matomo Tracking</name>
+	<namespace>Matomo</namespace>
+
 	<summary>Track users with Matomo</summary>
 	<description>Track users with Matomo</description>
-	<version>0.13.0</version>
+	<version>1.0.0</version>
 	<licence>agpl</licence>
 
-    <author mail="sebastien.marinier@arawa.fr" >Sébastien Marinier</author>
-    <author mail="baptiste.fotia@arawa.fr" >Baptiste Fotia</author>
+	<author mail="sebastien.marinier@arawa.fr" >Sébastien Marinier</author>
+	<author mail="baptiste.fotia@arawa.fr" >Baptiste Fotia</author>
 	<author>Klaus Herberth</author>
 
 	<category>tools</category>
 
-	<website>http://sualko.github.io/cloud_piwik/</website>
+	<website>https://github.com/arawa/cloud_matomo/</website>
 	<bugs>https://github.com/arawa/cloud_matomo/issues</bugs>
 	<repository type="git">https://github.com/arawa/cloud_matomo.git</repository>
 
 	<dependencies>
-		<nextcloud min-version="25" max-version="29"/>
+		<nextcloud min-version="29" max-version="32"/>
 	</dependencies>
 
 	<repair-steps>
 		<post-migration>
-			<step>OCA\Piwik\Migration\Settings</step>
+			<step>OCA\Matomo\Migration\Settings</step>
 		</post-migration>
 	</repair-steps>
 
 	<settings>
-		<admin>OCA\Piwik\Settings\Admin</admin>
+		<admin>OCA\Matomo\Settings\Admin</admin>
 	</settings>
 </info>

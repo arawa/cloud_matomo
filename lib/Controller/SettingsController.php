@@ -1,28 +1,23 @@
 <?php
 
-namespace OCA\Piwik\Controller;
+namespace OCA\Matomo\Controller;
 
-use OCA\Piwik\Config;
+use OCA\Matomo\Config;
 use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+use OCP\AppFramework\Http\Attribute\PublicPage;
 use OCP\IRequest;
 
 class SettingsController extends Controller {
-	private $config;
 
-	public function __construct(
-		$appName,
-		IRequest $request,
-		Config $config
-	) {
+	public function __construct(string $appName, IRequest $request, private Config $config) {
 		parent::__construct($appName, $request);
-
-		$this->config = $config;
 	}
 
 	/**
-	 * @NoAdminRequired
-	 * @PublicPage
 	 */
+	#[NoAdminRequired]
+	#[PublicPage]
 	public function index() {
 		return [
 			'result' => 'success',

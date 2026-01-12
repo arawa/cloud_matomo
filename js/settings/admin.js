@@ -1,15 +1,15 @@
 /* global OCP, OC */
 
 $(function() {
-   $('#piwikAdblockerWarning').hide();
+   $('#matomoAdblockerWarning').hide();
 
    function showRequestResult(element, result) {
       if (element.attr('type') === 'checkbox') {
          element = $('label[for="' + element.attr('id') + '"]');
       }
 
-      element.removeClass('piwik-success piwik-error');
-      element.addClass('piwik-' + result);
+      element.removeClass('matomo-success matomo-error');
+      element.addClass('matomo-' + result);
 
       var timeout = element.data('timeout');
 
@@ -18,22 +18,22 @@ $(function() {
       }
 
       timeout = setTimeout(function() {
-         element.removeClass('piwik-success piwik-error');
+         element.removeClass('matomo-success matomo-error');
       }, 1000);
 
       element.data('timeout', timeout);
    }
 
-   $('#piwikUrl').attr('placeholder', 'e.g. //' + window.location.host + '/piwik/');
+   $('#matomoUrl').attr('placeholder', 'e.g. //' + window.location.host + '/matomo/');
 
-   $('#piwikSettings input').change(function() {
+   $('#matomoSettings input').change(function() {
       var element = $(this);
       var key = $(this).attr('name');
       var value = $(this).attr('type') === 'checkbox' ? $(this).prop('checked') : $(this).val();
 
       $.ajax({
          method: 'PUT',
-         url: OC.generateUrl('apps/piwik/settings/' + key),
+         url: OC.generateUrl('apps/matomo/settings/' + key),
          data: {
             value: value
          },
@@ -41,7 +41,7 @@ $(function() {
             showRequestResult(element, response.status)
          },
          error: function() {
-            showRequestResult(element, 'error') 
+            showRequestResult(element, 'error')
          }
       });
    });

@@ -13,10 +13,10 @@ module.exports = function(grunt) {
          gruntfile: {
             src: 'Gruntfile.js'
          },
-         files: ['js/*.js', '!js/piwik.js']
+         files: ['js/*.js', '!js/track.js']
       },
       jsbeautifier: {
-         files: ['Gruntfile.js', 'js/*.js', '!js/piwik.js'],
+         files: ['Gruntfile.js', 'js/*.js', '!js/track.js'],
          options: {
             config: '.jsbeautifyrc'
          }
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
                banner: '<%= meta.banner %>'
             },
             files: {
-               src: ['build/js/*.js', '!build/js/piwik.js']
+               src: ['build/js/*.js', '!build/js/track.js']
             }
          }
       },
@@ -75,13 +75,13 @@ module.exports = function(grunt) {
       compress: {
          main: {
             options: {
-               archive: "archives/cloud_piwik-<%= meta.app.version %>.tar.gz",
+               archive: "archives/cloud_matomo-<%= meta.app.version %>.tar.gz",
                mode: 'tgz'
             },
             files: [{
                src: ['**'],
                expand: true,
-               dest: 'piwik/',
+               dest: 'matomo/',
                cwd: 'build/'
             }]
          }
@@ -89,15 +89,15 @@ module.exports = function(grunt) {
       exec: {
          createNextcloudSignature: {
             command: 'openssl dgst -sha512 -sign ' +
-               '~/.nextcloud/certificates/piwik.key ' +
-               'archives/cloud_piwik-<%= meta.app.version %>.tar.gz | openssl base64 > ' +
-               'archives/cloud_piwik-<%= meta.app.version %>.tar.gz.ncsig'
+               '~/.nextcloud/certificates/matomo.key ' +
+               'archives/cloud_matomo-<%= meta.app.version %>.tar.gz | openssl base64 > ' +
+               'archives/cloud_matomo-<%= meta.app.version %>.tar.gz.ncsig'
          },
          createGPGSignature: {
-            command: 'gpg --yes --detach-sign "archives/cloud_piwik-<%= meta.app.version %>.tar.gz"'
+            command: 'gpg --yes --detach-sign "archives/cloud_matomo-<%= meta.app.version %>.tar.gz"'
          },
          createGPGArmorSignature: {
-            command: 'gpg --yes --detach-sign --armor "archives/cloud_piwik-<%= meta.app.version %>.tar.gz"'
+            command: 'gpg --yes --detach-sign --armor "archives/cloud_matomo-<%= meta.app.version %>.tar.gz"'
          }
       }
    });

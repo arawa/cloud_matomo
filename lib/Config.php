@@ -1,29 +1,36 @@
 <?php
 
-namespace OCA\Piwik;
+namespace OCA\Matomo;
 
-use OCP\IConfig;
+use OCA\Matomo\AppInfo\Application;
+use OCP\IAppConfig;
 
 class Config {
-	public function __construct($appName, IConfig $config) {
-		$this->appName = $appName;
-		$this->config = $config;
+	public function __construct(private IAppConfig $config) {
 	}
 
-	public function getAppValue($key, $default = null) {
-		$value = $this->config->getAppValue($this->appName, $key, $default);
+	public function getAppValue(string $key, string $default = ''): string {
+		$value = $this->config->getValueString(Application::ID, $key, $default);
 		return (empty($value)) ? $default : $value;
 	}
 
-	public function setAppValue($key, $value) {
-		return $this->config->setAppValue($this->appName, $key, $value);
+	public function setAppValue(string $key, string $value) {
+		if (in_array($key, ['trackDir', 'trackUser'])) {
+			return $this->config->setValueBool(Application::ID, $key, $this->validateBoolean($value));
+		}
+		return $this->config->setValueString(Application::ID, $key, $value);
 	}
 
 	public function getBooleanAppValue($key) {
-		return $this->validateBoolean($this->getAppValue($key));
+		return $this->config->getValueBool(Application::ID, $key);
 	}
 
 	private function validateBoolean($val) {
 		return $val === true || $val === 'true';
 	}
+
+	public function deleteAppValue(string $key) {
+		return $this->config->deleteKey(Application::ID, $key);
+	}
+
 }

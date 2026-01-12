@@ -20,10 +20,10 @@ const isDryRun = process.argv.indexOf('--dry-run') > 1;
 const commitMessage = `release: ${package.version} :tada:`;
 const tagName = `v${package.version}`;
 const files = [
-	path.join(__dirname, '..', 'archives', `cloud_piwik-${package.version}.tar.gz`),
-	path.join(__dirname, '..', 'archives', `cloud_piwik-${package.version}.tar.gz.asc`),
-	path.join(__dirname, '..', 'archives', `cloud_piwik-${package.version}.tar.gz.ncsig`),
-	path.join(__dirname, '..', 'archives', `cloud_piwik-${package.version}.tar.gz.sig`),
+	path.join(__dirname, '..', 'archives', `cloud_matomo-${package.version}.tar.gz`),
+	path.join(__dirname, '..', 'archives', `cloud_matomo-${package.version}.tar.gz.asc`),
+	path.join(__dirname, '..', 'archives', `cloud_matomo-${package.version}.tar.gz.ncsig`),
+	path.join(__dirname, '..', 'archives', `cloud_matomo-${package.version}.tar.gz.sig`),
 ];
 
 function pull() {
@@ -123,7 +123,7 @@ async function createGithubRelease(changeLog) {
 
 	const octokit = new Octokit({
 		auth: process.env.GITHUB_TOKEN,
-		userAgent: 'custom releaser for sualko/cloud_piwik',
+		userAgent: 'custom releaser for arawa/cloud_matomo',
 	});
 
 	const origin = (await git.remote(['get-url', 'origin'])).trim();

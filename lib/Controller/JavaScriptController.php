@@ -1,39 +1,35 @@
 <?php
 
-namespace OCA\Piwik\Controller;
+namespace OCA\Matomo\Controller;
 
-use OCA\Piwik\Config;
+use OCA\Matomo\Config;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\DataDownloadResponse;
 use OCP\AppFramework\Http\Response;
-use OCP\IConfig;
+use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
+use OCP\AppFramework\Http\Attribute\PublicPage;
 use OCP\IRequest;
 
 class JavaScriptController extends Controller {
-	/** @var \OCP\IConfig */
-	protected $config;
 
 	/**
 	 * constructor of the controller
 	 *
 	 * @param string $appName
 	 * @param IRequest $request
-	 * @param IConfig $config
+	 * @param Config $config
 	 */
-	public function __construct($appName,
-		IRequest $request,
-		Config $config) {
+	public function __construct($appName, IRequest $request, private Config $config) {
 		parent::__construct($appName, $request);
-		$this->config = $config;
 	}
 
 	/**
-	 * @NoAdminRequired
-	 * @NoCSRFRequired
-	 * @PublicPage
-	 *
 	 * @return Response
 	 */
+	#[NoAdminRequired]
+	#[NoCSRFRequired]
+	#[PublicPage]
 	public function tracking() {
 		$options = [
 			'url' => $this->config->getAppValue('url'),
@@ -42,7 +38,7 @@ class JavaScriptController extends Controller {
 			'trackUser' => $this->config->getBooleanAppValue('trackUser'),
 		];
 
-		$script = "var cloudPiwikOptions = '".json_encode($options)."';";
+		$script = "var cloudMatomoOptions = '".json_encode($options)."';";
 		$script = file_get_contents(__DIR__ . '/../../js/track.js');
 		$script = str_replace('%OPTIONS%', json_encode($options), $script);
 
