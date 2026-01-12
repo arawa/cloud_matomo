@@ -1,22 +1,20 @@
 <?php
 
-namespace OCA\Piwik\Settings;
+namespace OCA\Matomo\Settings;
 
+use OCA\Matomo\Config;
+use OCA\Matomo\AppInfo\Application;
 use OCP\AppFramework\Http\TemplateResponse;
-use OCP\IConfig;
 use OCP\Settings\ISettings;
 
 class Admin implements ISettings {
-	/** @var IConfig */
-	private $config;
 
 	/**
 	 * Admin constructor.
 	 *
-	 * @param IConfig $config
+	 * @param Config $config
 	 */
-	public function __construct(IConfig $config) {
-		$this->config = $config;
+	public function __construct(private Config $config) {
 	}
 
 	/**
@@ -24,13 +22,13 @@ class Admin implements ISettings {
 	 */
 	public function getForm() {
 		$parameters = [
-			'url' => $this->config->getAppValue('piwik', 'url'),
-			'siteId' => $this->config->getAppValue('piwik', 'siteId'),
-			'trackDir' => $this->config->getAppValue('piwik', 'trackDir'),
-			'trackUser' => $this->config->getAppValue('piwik', 'trackUser'),
+			'url' => $this->config->getAppValue('url'),
+			'siteId' => $this->config->getAppValue('siteId'),
+			'trackDir' => $this->config->getBooleanAppValue('trackDir'),
+			'trackUser' => $this->config->getBooleanAppValue('trackUser'),
 		];
 
-		return new TemplateResponse('piwik', 'settings/admin', $parameters);
+		return new TemplateResponse(Application::ID, 'settings/admin', $parameters);
 	}
 
 	/**

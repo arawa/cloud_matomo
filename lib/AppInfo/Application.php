@@ -1,20 +1,20 @@
 <?php
 
-namespace OCA\Piwik\AppInfo;
+namespace OCA\Matomo\AppInfo;
 
 use OC\Security\CSP\ContentSecurityPolicyManager;
 use OC\Security\CSP\ContentSecurityPolicyNonceManager;
+use OCA\Matomo\Config;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
 use OCP\AppFramework\Http\ContentSecurityPolicy;
-use OCP\IConfig;
 use OCP\IURLGenerator;
 use OCP\Util;
 
 class Application extends App implements IBootstrap {
-	public const ID = 'piwik';
+	public const ID = 'matomo';
 
 	public function __construct(array $urlParams = []) {
 		parent::__construct(self::ID, $urlParams);
@@ -32,14 +32,14 @@ class Application extends App implements IBootstrap {
 		Util::addHeader(
 			'script',
 			[
-				'src' => $urlGenerator->linkToRoute('piwik.JavaScript.tracking'),
+				'src' => $urlGenerator->linkToRoute(self::ID.'.JavaScript.tracking'),
 				'nonce' => $nonceManager->getNonce(),
 			], ''
 		);
 	}
 
-	public function addContentSecurityPolicy(IConfig $config, ContentSecurityPolicyManager $policyManager): void {
-		$url = $config->getAppValue('piwik', 'url');
+	public function addContentSecurityPolicy(Config $config, ContentSecurityPolicyManager $policyManager): void {
+		$url = $config->getAppValue('url');
 		$allowedUrl = ' \'self\' ';
 		$parseUrl = parse_url($url);
 
