@@ -7,13 +7,13 @@
 	<version>0.13.0</version>
 	<licence>agpl</licence>
 
-    <author mail="sebastien.marinier@arawa.fr" >Sébastien Marinier</author>
-    <author mail="baptiste.fotia@arawa.fr" >Baptiste Fotia</author>
+	<author mail="sebastien.marinier@arawa.fr" >Sébastien Marinier</author>
+	<author mail="baptiste.fotia@arawa.fr" >Baptiste Fotia</author>
 	<author>Klaus Herberth</author>
 
 	<category>tools</category>
 
-	<website>http://sualko.github.io/cloud_piwik/</website>
+	<website>https://github.com/arawa/cloud_matomo/</website>
 	<bugs>https://github.com/arawa/cloud_matomo/issues</bugs>
 	<repository type="git">https://github.com/arawa/cloud_matomo.git</repository>
 
