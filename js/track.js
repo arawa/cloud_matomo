@@ -65,8 +65,8 @@ var _paq = _paq || [];
       });
    }
 
-   // set piwik options
-   _paq.push(['setTrackerUrl', options.url + 'piwik.php']);
+   // set Matomo options
+   _paq.push(['setTrackerUrl', options.url + 'matomo.php']);
    _paq.push(['setSiteId', options.siteId]);
 
    if (app !== 'files' || options.trackDir !== 'on') {
@@ -74,15 +74,15 @@ var _paq = _paq || [];
       _paq.push(['trackPageView']);
    }
 
-   if (typeof Piwik === 'undefined') {
-      // load piwik library
+   if (typeof Matomo === 'undefined') {
+      // load Matomo library
       var d = document,
          g = d.createElement('script'),
          s = d.getElementsByTagName('script')[0];
       g.type = 'text/javascript';
       g.async = true;
       g.defer = true;
-      g.src = options.url + 'piwik.js';
+      g.src = options.url + 'matomo.js';
       s.parentNode.insertBefore(g, s);
    }
 }());

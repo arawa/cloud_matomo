@@ -1,23 +1,27 @@
-#piwikSettings table {
+#matomoSettings table {
     width: 400px;
     max-width: 100%;
 }
-#piwikSettings td {
+#matomoSettings td {
     width: 50%;
 }
 
-#piwikSettings input[type="text"], #piwikSettings input[type="number"] {
+#matomoSettings input[type="text"], #matomoSettings input[type="number"] {
     width: 100%;
 }
 
-#piwikSettings input, #piwikSettings label {
+#matomoSettings input, #matomoSettings label {
     transition: background-color 0.5s;
 }
 
-#piwikSettings input.piwik-success, #piwikSettings label.piwik-success {
+#matomoSettings input.matomo-success, #matomoSettings label.matomo-success {
     background-color: #4eb387;
 }
 
-#piwikSettings input.piwik-error, #piwikSettings label.piwik-error {
+#matomoSettings input.matomo-error, #matomoSettings label.matomo-error {
     background-color: #f65c38;
+}
+
+#matomoSettings .settings-hint {
+	font-style: italic;
 }
