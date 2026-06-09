@@ -8,13 +8,16 @@ Track [Nextcloud](https://nextcloud.com) users with [Matomo](https://matomo.org)
 - Nextcloud >= 29
 - Working Matomo installation (tested with 4.13.3)
 - Empty custom variable slots on index 1, 2 and 3
+- Application id in custom dimension action on index 1
 
 ## What will be tracked?
 - Normal Matomo stuff (url, page title, browser, ...)
-- User ID aka Nextcloud user
+- User ID aka Nextcloud user ("Track user id" enabled in settings)
+- Files navigation ("Track file browsing" enabled in settings)
 - App in first custom variable
 - Share ID in second custom variable (<code>index.php/s/SHARE_ID</code>)
 - Share ID + folder or file name in third custom variable
+- Application id in custom dimension action (see Matomo Configuration)
 
 ## What will not be tracked?
 - Download
@@ -29,6 +32,13 @@ Track [Nextcloud](https://nextcloud.com) users with [Matomo](https://matomo.org)
  - Add <code>RewriteRule "^matomo/(.*)$" "http://matomo.tld/$1" [P]</code> to your <code>.htaccess</code>
  - a2enmod proxy
  - Add <code>ProxyPass /matomo/ http://matomo.tld/</code> to your apache VirtualHost section
+
+## Matomo configuration
+- Go in "Administration" (wheel icon) -> WebSites -> Custom Dimensions
+- Select your Nextcloud web site
+- Configure a new action dimension (!! Not Visit !!)
+- Type Name: "Nextcloud App", activate it, and click Create
+- Consult Behaviour -> Nextcloud App
 
 ## Publishing a new version
 1. bump version in `package.json`
