@@ -8,9 +8,10 @@ use OCP\AppFramework\Http\Attribute\NoAdminRequired;
 use OCP\AppFramework\Http\Attribute\PublicPage;
 use OCP\IRequest;
 
-class SettingsController extends Controller {
-
-	public function __construct(string $appName, IRequest $request, private Config $config) {
+class SettingsController extends Controller
+{
+	public function __construct(string $appName, IRequest $request, private Config $config)
+	{
 		parent::__construct($appName, $request);
 	}
 
@@ -18,7 +19,8 @@ class SettingsController extends Controller {
 	 */
 	#[NoAdminRequired]
 	#[PublicPage]
-	public function index() {
+	public function index()
+	{
 		return [
 			'result' => 'success',
 			'data' => [
@@ -29,7 +31,8 @@ class SettingsController extends Controller {
 		];
 	}
 
-	public function update($key) {
+	public function update($key)
+	{
 		if (!in_array($key, ['url', 'siteId', 'trackDir', 'trackUser'])) {
 			return [
 				'result' => 'error',
@@ -44,15 +47,18 @@ class SettingsController extends Controller {
 		];
 	}
 
-	private function getTrimParam($key) {
+	private function getTrimParam($key)
+	{
 		return trim($this->request->getParam($key));
 	}
 
-	private function getCheckboxParam($key) {
+	private function getCheckboxParam($key)
+	{
 		return $this->getCheckboxValue($this->request->getParam($key));
 	}
 
-	private function getCheckboxValue($var) {
+	private function getCheckboxValue($var)
+	{
 		return (isset($var)) ? $var : 'false';
 	}
 }

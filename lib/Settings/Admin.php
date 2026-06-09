@@ -2,39 +2,48 @@
 
 namespace OCA\Matomo\Settings;
 
-use OCA\Matomo\Config;
 use OCA\Matomo\AppInfo\Application;
+use OCA\Matomo\Config;
 use OCP\AppFramework\Http\TemplateResponse;
+use OCP\AppFramework\Services\IInitialState;
 use OCP\Settings\ISettings;
+use OCP\Util;
 
-class Admin implements ISettings {
-
+class Admin implements ISettings
+{
 	/**
 	 * Admin constructor.
 	 *
 	 * @param Config $config
 	 */
-	public function __construct(private Config $config) {
+	public function __construct(private Config $config, private IInitialState $initialState)
+	{
 	}
 
 	/**
 	 * @return TemplateResponse
 	 */
-	public function getForm() {
-		$parameters = [
-			'url' => $this->config->getAppValue('url'),
-			'siteId' => $this->config->getAppValue('siteId'),
-			'trackDir' => $this->config->getBooleanAppValue('trackDir'),
-			'trackUser' => $this->config->getBooleanAppValue('trackUser'),
-		];
-
-		return new TemplateResponse(Application::ID, 'settings/admin', $parameters);
+	public function getForm()
+	{
+		$this->initialState->provideInitialState(
+			'config',
+			[
+				'matomoUrl' => $this->config->getAppValue('url'),
+				'matomoSiteId' => $this->config->getAppValue('siteId'),
+				'matomoTrackDir' => $this->config->getBooleanAppValue('trackDir'),
+				'matomoTrackUser' => $this->config->getBooleanAppValue('trackUser'),
+			]
+		);
+		Util::addScript('matomo', 'matomo-admin');
+		Util::addStyle('matomo', 'matomo-admin');
+		return new TemplateResponse(Application::ID, 'settings/admin', [], 'blank');
 	}
 
 	/**
 	 * @return string the section ID, e.g. 'sharing'
 	 */
-	public function getSection() {
+	public function getSection()
+	{
 		return 'additional';
 	}
 
@@ -43,7 +52,8 @@ class Admin implements ISettings {
 	 * the admin section. The forms are arranged in ascending order of the
 	 * priority values. It is required to return a value between 0 and 100.
 	 */
-	public function getPriority() {
+	public function getPriority()
+	{
 		return 50;
 	}
 }
