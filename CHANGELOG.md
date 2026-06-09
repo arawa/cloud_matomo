@@ -5,7 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## v1.1.0 - 2026-06-09
+
+### Added
+
+- track Nextcloud apps usage with Matomo customDimensions
+
+### Changed
+
+- use Vue3, and new Nextcloud settings components
+- move track.js to TypeScript
+- support NC33 and 34
+
+### Removed
+
+- do not use jQuery anymore
+- remove CSS and JS static files
+
+### Fix
+
+- Migrate from Piwik settings to Matomo settings
+
+### Doc
+
+- Update README (customDimension)
 
 ## v1.0.0 - 2026-01-16
 
