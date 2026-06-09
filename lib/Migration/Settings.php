@@ -2,7 +2,6 @@
 
 namespace OCA\Matomo\Migration;
 
-use OC\Config\ConfigManager;
 use OCA\Matomo\AppInfo\Application;
 use OCP\IAppConfig;
 use OCP\Migration\IOutput;
@@ -12,7 +11,7 @@ class Settings implements IRepairStep
 {
 	public const OLD_APP_ID = 'piwik';
 
-	public function __construct(private IAppConfig $config, private ConfigManager $configManager)
+	public function __construct(private IAppConfig $config)
 	{
 	}
 
