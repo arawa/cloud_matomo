@@ -13,32 +13,39 @@ use OCP\AppFramework\Http\ContentSecurityPolicy;
 use OCP\IURLGenerator;
 use OCP\Util;
 
-class Application extends App implements IBootstrap {
+class Application extends App implements IBootstrap
+{
 	public const ID = 'matomo';
 
-	public function __construct(array $urlParams = []) {
+	public function __construct(array $urlParams = [])
+	{
 		parent::__construct(self::ID, $urlParams);
 	}
 
-	public function register(IRegistrationContext $context): void {
+	public function register(IRegistrationContext $context): void
+	{
 	}
 
-	public function boot(IBootContext $context): void {
+	public function boot(IBootContext $context): void
+	{
 		$context->injectFn([$this, 'addTrackingScript']);
 		$context->injectFn([$this, 'addContentSecurityPolicy']);
 	}
 
-	public function addTrackingScript(IURLGenerator $urlGenerator, ContentSecurityPolicyNonceManager $nonceManager):void {
+	public function addTrackingScript(IURLGenerator $urlGenerator, ContentSecurityPolicyNonceManager $nonceManager):void
+	{
 		Util::addHeader(
 			'script',
 			[
-				'src' => $urlGenerator->linkToRoute(self::ID.'.JavaScript.tracking'),
+				'type' => 'module',
+				'src' => $urlGenerator->linkToRoute(self::ID.'.JavaScript.tracking', ['filename' => 'tracking']),
 				'nonce' => $nonceManager->getNonce(),
 			], ''
 		);
 	}
 
-	public function addContentSecurityPolicy(Config $config, ContentSecurityPolicyManager $policyManager): void {
+	public function addContentSecurityPolicy(Config $config, ContentSecurityPolicyManager $policyManager): void
+	{
 		$url = $config->getAppValue('url');
 		$allowedUrl = ' \'self\' ';
 		$parseUrl = parse_url($url);
