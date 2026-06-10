@@ -130,13 +130,12 @@ window._paq = window._paq || [];
 
 	if (typeof Matomo === 'undefined') {
 		// load Matomo library
-		const d = document
-		const g = d.createElement('script')
-		const s = d.getElementsByTagName('script')[0]
-		g.type = 'text/javascript'
-		g.async = true
-		g.defer = true
-		g.src = options.url + 'matomo.js'
-		s.parentNode.insertBefore(g, s)
+		const addedScript = document.createElement('script')
+		const parentScript = document.getElementsByTagName('script')[0]
+		addedScript.type = 'text/javascript'
+		addedScript.async = true
+		addedScript.defer = true
+		addedScript.src = options.url + 'matomo.js'
+		parentScript.parentNode.insertBefore(addedScript, parentScript)
 	}
 }())
