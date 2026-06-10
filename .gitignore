@@ -5,3 +5,6 @@ archives/
 .php-cs-fixer.cache
 /vendor/
 /.vscode/
+css/
+js/
+build/
