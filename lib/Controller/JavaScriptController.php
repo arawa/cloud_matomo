@@ -5,6 +5,7 @@ namespace OCA\Matomo\Controller;
 use OCA\Matomo\Config;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
+use OCP\AppFramework\Http\Attribute\FrontpageRoute;
 use OCP\AppFramework\Http\Attribute\NoAdminRequired;
 use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
 use OCP\AppFramework\Http\Attribute\PublicPage;
@@ -32,7 +33,8 @@ class JavaScriptController extends Controller
 	#[NoAdminRequired]
 	#[NoCSRFRequired]
 	#[PublicPage]
-	public function tracking(string $filename = null): Response
+	#[FrontpageRoute(verb: 'GET', url: '/js/{filename}')]
+	public function tracking(?string $filename = null): Response
 	{
 		if ($filename === 'tracking') {
 			$options = [
