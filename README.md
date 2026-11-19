@@ -40,8 +40,11 @@ Track [Nextcloud](https://nextcloud.com) users with [Matomo](https://matomo.org)
 - Type Name: "Nextcloud App", activate it, and click Create
 - Consult Behaviour -> Nextcloud App
 
+## Development
+- `make` installs the PHP and JS dependencies and builds the frontend
+- `npm run watch` rebuilds the frontend on changes
+
 ## Publishing a new version
-1. bump version in `package.json`
-2. `yarn release:build`
-3. `yarn release:sign`
-4. `yarn release:publish`
+1. bump version in `appinfo/info.xml` and `package.json`
+2. `make appstore` builds `build/artifacts/appstore/matomo.tar.gz`, signed in `matomo.tar.gz.ncsig` when the key `~/.nextcloud/certificates/matomo.key` exists
+3. upload the archive and its signature to the [App Store](https://apps.nextcloud.com/developer/apps/releases/new)
