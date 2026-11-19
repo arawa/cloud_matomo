@@ -4,8 +4,11 @@ namespace OCA\Matomo\Controller;
 
 use OCA\Matomo\Config;
 use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http;
+use OCP\AppFramework\Http\Attribute\FrontpageRoute;
 use OCP\AppFramework\Http\Attribute\NoAdminRequired;
 use OCP\AppFramework\Http\Attribute\PublicPage;
+use OCP\AppFramework\Http\DataResponse;
 use OCP\IRequest;
 
 class SettingsController extends Controller
@@ -15,36 +18,36 @@ class SettingsController extends Controller
 		parent::__construct($appName, $request);
 	}
 
-	/**
-	 */
 	#[NoAdminRequired]
 	#[PublicPage]
-	public function index()
+	#[FrontpageRoute(verb: 'GET', url: '/settings')]
+	public function index(): DataResponse
 	{
-		return [
+		return new DataResponse([
 			'result' => 'success',
 			'data' => [
 				'url' => $this->config->getAppValue('url'),
 				'siteId' => $this->config->getAppValue('siteId'),
 				'trackDir' => $this->config->getBooleanAppValue('trackDir')
 			],
-		];
+		]);
 	}
 
-	public function update($key)
+	#[FrontpageRoute(verb: 'PUT', url: '/settings/{key}')]
+	public function update(string $key): DataResponse
 	{
 		if (!in_array($key, ['url', 'siteId', 'trackDir', 'trackUser'])) {
-			return [
-				'result' => 'error',
+			return new DataResponse([
+				'status' => 'error',
 				'message' => 'Tried to update not allowed param.',
-			];
+			], Http::STATUS_BAD_REQUEST);
 		}
 
 		$this->config->setAppValue($key, $this->getTrimParam('value'));
 
-		return [
+		return new DataResponse([
 			'status' => 'success',
-		];
+		]);
 	}
 
 	private function getTrimParam($key)
