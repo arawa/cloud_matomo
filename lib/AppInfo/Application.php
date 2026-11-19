@@ -51,7 +51,7 @@ class Application extends App implements IBootstrap
 		$parseUrl = parse_url($url);
 
 		$isHostDifferent = isset($parseUrl['host']) && array_key_exists('SERVER_NAME', $_SERVER) && $_SERVER['SERVER_NAME'] !== $parseUrl['host'];
-		$isPortDifferent = isset($parseUrl['port']) && array_key_exists('SERVER_PORT', $_SERVER) && $_SERVER['SERVER_PORT'] !== $parseUrl['port'];
+		$isPortDifferent = isset($parseUrl['port']) && array_key_exists('SERVER_PORT', $_SERVER) && (int) $_SERVER['SERVER_PORT'] !== $parseUrl['port'];
 
 		if ($isHostDifferent || $isPortDifferent) {
 			$allowedUrl = $parseUrl['host'];
