@@ -12,7 +12,7 @@ cert_directory=$(HOME)/.nextcloud/certificates
 # Command running occ, e.g. make appstore occ="sudo -u www-data php ../../occ"
 occ=php ../../occ
 # Files and directories shipped in the app store package
-appstore_files=appinfo css img js lib templates LICENSE
+appstore_files=appinfo css img js l10n lib templates LICENSE
 npm=$(shell which npm 2> /dev/null)
 composer=$(shell which composer 2> /dev/null)
 
