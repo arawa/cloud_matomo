@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v1.2.0 - 2026-11-19
+
+### Added
+
+- localisation of the admin settings page, with French translation
+
+### Changed
+
+- support NC 32 to 36 (drop NC 31)
+- routes with PHP attributes
+
+### Removed
+
+- replace Grunt and the release publishing script with a Nextcloud `Makefile`
+
+### Fix
+
+- undefined array warning in the settings template (fixes [#7](https://github.com/arawa/cloud_matomo/issues/7))
+
 ## v1.1.0 - 2026-06-09
 
 ### Added
