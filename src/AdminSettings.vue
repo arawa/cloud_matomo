@@ -4,9 +4,8 @@
 -->
 <template>
 	<NcSettingsSection class="matomo-settings" :name="t('matomo', 'Matomo Tracking')">
-		<p class="settings-hint">
-			If you have no Matomo instance, go to <a href="https://matomo.org" target="_blank">matomo.org</a> for further instructions.
-		</p>
+		<!-- eslint-disable-next-line vue/no-v-html -->
+		<p class="settings-hint" v-html="hint" />
 		<NcTextField v-model="matomo.siteId"
 			class="matomo-input"
 			:label="t('matomo', 'Site ID')"
@@ -73,7 +72,18 @@ const matomo = reactive({
 
 const statuses = ref({})
 
-const placeholder = computed(() => `e.g. //${window.location.host}/matomo/`)
+const placeholder = computed(() => t('matomo', 'e.g. {url}', { url: `//${window.location.host}/matomo/` }))
+
+const hint = t(
+	'matomo',
+	'If you have no Matomo instance, go to {linkStart}matomo.org{linkEnd} for further instructions.',
+	{
+		linkStart: '<a href="https://matomo.org" target="_blank" rel="noopener noreferrer">',
+		linkEnd: '</a>',
+	},
+	undefined,
+	{ escape: false },
+)
 
 /**
  * Updates a Matomo setting by PUT request
